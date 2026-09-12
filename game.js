@@ -159,7 +159,7 @@ function gameInitialization(player1, player2) {
         let gameEnded = false;
     
         //Initialization of PlayerTurnTitle
-        displayController.changePlayerTurnTitle(`${currentPlayer.getName()}'s Turn`);
+        displayController.changePlayerTurnTitle(`Vez de: ${currentPlayer.getName()}`);
     
     
         const makePlayerMove = (cell, player) => {
@@ -179,7 +179,7 @@ function gameInitialization(player1, player2) {
                     return player2;
     
                 default:
-                    throw new Error('Invalid symbol provided');
+                    throw new Error('Simbolo inválido');
             }
         }
     
@@ -189,12 +189,12 @@ function gameInitialization(player1, player2) {
             const winnerObj = gameBoard.checkWinner();
             if (winnerObj.hasSomeoneWon) {
                 const winnerPlayer = parseSymbolToPlayer(winnerObj.winnerSymbol, player1, player2);
-                const message = `${winnerPlayer.getName()} Wins!`;
+                const message = `${winnerPlayer.getName()} Venceu!`;
                 displayController.showResultDialog(message);
                 res.gameEnded = true;
             }
             else if (winnerObj.tie) {
-                const message = `It's a Tie`;
+                const message = `Empate!`;
                 displayController.showResultDialog(message);
                 res.gameEnded = true;
             }
@@ -204,7 +204,7 @@ function gameInitialization(player1, player2) {
     
         const changePlayerTurn = () => {
             currentPlayer = currentPlayer === firstPlayer ? secondPlayer : firstPlayer;
-            const message = gameEnded ? 'Game End' : `${currentPlayer.getName()}'s Turn`;
+            const message = gameEnded ? 'Fim do jogo' : `Vez de: ${currentPlayer.getName()}`;
             displayController.changePlayerTurnTitle(message);
         }
     
@@ -222,7 +222,7 @@ function gameInitialization(player1, player2) {
         const cleanGame = function() {
             displayController.cleanGameboard();
             gameBoard.clearArray();
-            displayController.changePlayerTurnTitle(`${currentPlayer.getName()}'s Turn`);
+            displayController.changePlayerTurnTitle(`Vez de: ${currentPlayer.getName()}`);
             gameEnded = false;
         }
     

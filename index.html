@@ -1,19 +1,19 @@
 <!DOCTYPE html>
-<html lang="pt-BR"> -- Mudança linguagem
+<html lang="pt-BR"> -- Mudança lingua
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tic Tac Toe</title>
+    <title>Jogo da Velha</title>
     <link rel="stylesheet" href="style.css">
     <script src="game.js" defer></script>
 </head>
 <body>
     <header>
-        <h1>Tic Tac Toe</h1>
+        <h1>Jogo da Velha</h1>
     </header>
 
     <main>
-        <p>Turn</p>
+        <p>Vez</p>
         <div class="gameboard">
             <div class="gamecell" data-position="0"></div>
             <div class="gamecell" data-position="1"></div>
@@ -25,30 +25,30 @@
             <div class="gamecell" data-position="7"></div>
             <div class="gamecell" data-position="8"></div>
         </div>
-        <button type="button">Reset</button>
+        <button type="button">Resetar</button>
     </main>
 
     <dialog class="names-dialog">
         <form>
-            <p class="title">Let's start the game!</p>
+            <p class="title">Vamos começar o jogo!</p>
             <p  class="player-name">
-                <label for="name1">Player 1's Name:</label>
+                <label for="name1">Nome do Jogador 1:</label>
                 <input type="text" name="name1" id="name1" maxlength="15" required>
             </p>
             <p  class="player-name">
-                <label for="name2">Player 2's Name:</label>
+                <label for="name2">Nome do jogador 2:</label>
                 <input type="text" name="name2" id="name2" maxlength="15" required>
             </p>
-            <button>Confirm</button>
+            <button>Confirmar</button>
         </form>
     </dialog>
 
     <dialog class="result-dialog">
-        <h1>Player X Wins!</h1>
+        <h1>Jogador X venceu!</h1>
     </dialog>
 
     <footer>
-        <p>Made by Marc Frances</p>
+        <p>Made by Marc Frances - Modificado por alunos de ADS da Fatec Ribeirão Preto</p>
     </footer>
 </body>
 </html>
