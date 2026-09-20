@@ -1,54 +1,57 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="en" id="html-root">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jogo da Velha</title>
+    <title id="page-title">Tic Tac Toe</title>
     <link rel="stylesheet" href="style.css">
     <script src="game.js" defer></script>
 </head>
 <body>
     <header>
-        <h1>Jogo da Velha</h1>
+        <h1 id="main-heading">Tic Tac Toe</h1>
     </header>
 
     <main>
-        <p>Vez</p>
-        <div class="gameboard">
-            <div class="gamecell" data-position="0"></div>
-            <div class="gamecell" data-position="1"></div>
-            <div class="gamecell" data-position="2"></div>
-            <div class="gamecell" data-position="3"></div>
-            <div class="gamecell" data-position="4"></div>
-            <div class="gamecell" data-position="5"></div>
-            <div class="gamecell" data-position="6"></div>
-            <div class="gamecell" data-position="7"></div>
-            <div class="gamecell" data-position="8"></div>
+        <p id="turn-display" aria-live="polite">Turn</p>
+        <div class="gameboard" role="grid" id="board" aria-label="Tic Tac Toe Board">
+            <button type="button" class="gamecell" role="gridcell" data-position="0" aria-label="Square 1, Empty"></button>
+            <button type="button" class="gamecell" role="gridcell" data-position="1" aria-label="Square 2, Empty"></button>
+            <button type="button" class="gamecell" role="gridcell" data-position="2" aria-label="Square 3, Empty"></button>
+            <button type="button" class="gamecell" role="gridcell" data-position="3" aria-label="Square 4, Empty"></button>
+            <button type="button" class="gamecell" role="gridcell" data-position="4" aria-label="Square 5, Empty"></button>
+            <button type="button" class="gamecell" role="gridcell" data-position="5" aria-label="Square 6, Empty"></button>
+            <button type="button" class="gamecell" role="gridcell" data-position="6" aria-label="Square 7, Empty"></button>
+            <button type="button" class="gamecell" role="gridcell" data-position="7" aria-label="Square 8, Empty"></button>
+            <button type="button" class="gamecell" role="gridcell" data-position="8" aria-label="Square 9, Empty"></button>
         </div>
-        <button type="button">Resetar</button>
+        <button type="button" id="btn-reset">Reset</button>
     </main>
 
-    <dialog class="names-dialog">
-        <form>
-            <p class="title">Vamos começar o jogo!</p>
+    <dialog class="names-dialog" id="setup-dialog">
+        <form method="dialog">
+            <p class="title" id="setup-title">Let's start the game!</p>
+
+            <!-- Player 1's name (always visible) -->
             <p  class="player-name">
-                <label for="name1">Nome do Jogador 1:</label>
+                <label for="name1" id="label-p1">Player 1's Name:</label>
                 <input type="text" name="name1" id="name1" maxlength="15" required>
             </p>
-            <p  class="player-name">
-                <label for="name2">Nome do jogador 2:</label>
+            <!-- Player 2's name (only visible in player vs player) -->
+            <p  class="player-name" id="p2-container">
+                <label for="name2">Player 2's Name:</label>
                 <input type="text" name="name2" id="name2" maxlength="15" required>
             </p>
-            <button>Confirmar</button>
+            <button type="submit" id="btn-confirm">Confirm</button>
         </form>
     </dialog>
 
-    <dialog class="result-dialog">
-        <h1>Jogador X venceu!</h1>
+    <dialog class="result-dialog" id="finish-dialog" aria-modal="true">
+        <h1 id="result-message" aria-live="assertive">Player X Wins!</h1>
     </dialog>
 
     <footer>
-        <p>Made by Marc Frances - Modificado por alunos de ADS da Fatec Ribeirão Preto</p>
+        <p>Made by Marc Frances</p>
     </footer>
 </body>
 </html>
