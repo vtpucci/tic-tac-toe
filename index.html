@@ -32,6 +32,21 @@
         <form method="dialog">
             <p class="title" id="setup-title">Let's start the game!</p>
 
+            <!--Creating the select language button-->
+            <label id = lang-label>Select the Language:</label>
+                <select>id = select-button
+                    <option value = English>English</option>
+                    <option value = Português>Português</option>
+                    <option value = Español>Español</option>
+                </select>
+
+            <!--Creating the play agaist AI-->
+            <label id = ai-label>Select the Game Mode:</label>
+                <select>id = mode-button
+                    <option value = English>Player vs Player</option>
+                    <option value = Português>Player Vs AI</option>
+                </select>
+
             <!-- Player 1's name (always visible) -->
             <p  class="player-name">
                 <label for="name1" id="label-p1">Player 1's Name:</label>
