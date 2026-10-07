@@ -1,0 +1,61 @@
+{
+    "ptbr": {
+        "title": "Jogo da Velha",
+        "chooseLanguage": "Escolha o idioma",
+        "start": "Jogar",
+        "turn": "Vez de Jogador",
+        "threerow": "Trinca!",
+        "win": "Ganhou!",
+        "lose": "Perdeu!",
+        "draw": "Deu Velha!",
+        "playagain": "Jogar novamente"
+    },
+
+    "ptpt": {
+        "title": "Jogo do Galo",
+        "chooseLanguage": "Escolhe o idioma",
+        "start": "Jogar",
+        "turn": "É a tua vez, Jogador",
+        "threerow": "Três em linha!",
+        "win": "Ganhaste!",
+        "lose": "Perdeste!",
+        "draw": "Empate!",
+        "playagain": "Jogar novamente"
+    },
+
+    "es": {
+        "title": "Tres en raya",
+        "chooseLanguage": "Elige el idioma",
+        "start": "Jugar",
+        "turn": "Te toca, Jugador",
+        "threerow": "¡Tres en raya!",
+        "win": "¡Victoria!",
+        "lose": "¡Derrota!",
+        "draw": "¡Tablas!",
+        "playagain": "Jugar de nuevo"
+    },
+
+    "fr": {
+        "title": "Morpion",
+        "chooseLanguage": "Choisissez la langue",
+        "start": "Jouer",
+        "turn": "C’est ton tour",
+        "threerow": "Trois en ligne !",
+        "win": "Victoire !",
+        "lose": "Défaite !",
+        "draw": "Égalité !",
+        "playagain": "Rejouer"
+    },
+
+    "de": {
+        "title": "Tic-Tac-Toe",
+        "chooseLanguage": "Sprache auswählen",
+        "start": "Spielen",
+        "turn": "Du bist dran.",
+        "threerow": "Drei in einer Reihe!",
+        "win": "Sieg!",
+        "lose": "Niederlage!",
+        "draw": "Unentschieden!",
+        "playagain": "Nochmal spielen"
+    }
+}
