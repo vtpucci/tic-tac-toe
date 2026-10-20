@@ -4,6 +4,13 @@ const resetButton = document.querySelector('main button');
 const namesDialog = document.querySelector('.names-dialog');
 const namesDialogButton = namesDialog.querySelector('button');
 
+let IA_mode = false; 
+const modeButton = document.getElementById('mode-button');
+
+modeButton.addEventListener('change', function() {
+    IA_mode = (this.value === "true");
+});
+
 const Player = (name, symbol) => {
     const getSymbol = () => symbol;
     const getName = () => name;
@@ -155,80 +162,79 @@ function gameInitialization(player1, player2) {
     })();
     
     const game = ((firstPlayer, secondPlayer) => {
-        let currentPlayer = firstPlayer;
-        let gameEnded = false;
-    
-        //Initialization of PlayerTurnTitle
-        displayController.changePlayerTurnTitle(`${currentPlayer.getName()}'s Turn`);
-    
-    
-        const makePlayerMove = (cell, player) => {
-            if(cell.textContent !== '') return true;
-    
-            displayController.addPlayerSymbol(cell, player.getSymbol() );
-            gameBoard.addToArray(player.getSymbol(), cell.dataset.position);
-            return false;
+    let currentPlayer = firstPlayer;
+    let gameEnded = false;
+
+    // Inicialização do PlayerTurnTitle
+    displayController.changePlayerTurnTitle(`${currentPlayer.getName()}'s Turn`);
+
+    const makePlayerMove = (cell, player) => {
+        // Se a célula já tiver texto, retorna true (está ocupada)
+        if (cell.textContent !== '') return true;
+
+        displayController.addPlayerSymbol(cell, player.getSymbol());
+        gameBoard.addToArray(player.getSymbol(), cell.dataset.position);
+        return false;
+    }
+
+    const parseSymbolToPlayer = (symbol, player1, player2) => {
+        switch (symbol) {
+            case player1.getSymbol(): return player1;
+            case player2.getSymbol(): return player2;
+            default: throw new Error('Invalid symbol provided');
         }
-    
-        const parseSymbolToPlayer = (symbol, player1, player2) => {
-            switch (symbol) {
-                case player1.getSymbol():
-                    return player1;
+    }
+
+    const processGameResult = (player1, player2) => {
+        const res = { gameEnded: false };
+        const winnerObj = gameBoard.checkWinner();
         
-                case player2.getSymbol():
-                    return player2;
-    
-                default:
-                    throw new Error('Invalid symbol provided');
-            }
+        if (winnerObj.hasSomeoneWon) {
+            const winnerPlayer = parseSymbolToPlayer(winnerObj.winnerSymbol, player1, player2);
+            const message = `${winnerPlayer.getName()} Wins!`;
+            displayController.showResultDialog(message);
+            res.gameEnded = true;
+        } else if (winnerObj.tie) {
+            const message = `It's a Tie`;
+            displayController.showResultDialog(message);
+            res.gameEnded = true;
         }
-    
-        const processGameResult = (player1, player2) => {
-            const res = {gameEnded: false};
-            
-            const winnerObj = gameBoard.checkWinner();
-            if (winnerObj.hasSomeoneWon) {
-                const winnerPlayer = parseSymbolToPlayer(winnerObj.winnerSymbol, player1, player2);
-                const message = `${winnerPlayer.getName()} Wins!`;
-                displayController.showResultDialog(message);
-                res.gameEnded = true;
-            }
-            else if (winnerObj.tie) {
-                const message = `It's a Tie`;
-                displayController.showResultDialog(message);
-                res.gameEnded = true;
-            }
-    
-            return res;
+        return res;
+    }
+
+    const changePlayerTurn = () => {
+        currentPlayer = currentPlayer === firstPlayer ? secondPlayer : firstPlayer;
+        const message = gameEnded ? 'Game End' : `${currentPlayer.getName()}'s Turn`;
+        displayController.changePlayerTurnTitle(message);
+    }
+
+    const doPlayerTurn = function(e) {
+        if (gameEnded) return;
+
+        //Se o modo IA estiver ativo E for o turno do Player 2, bloqueia o clique
+        if (IA_mode === true && currentPlayer === secondPlayer) {
+            return; 
         }
-    
-        const changePlayerTurn = () => {
-            currentPlayer = currentPlayer === firstPlayer ? secondPlayer : firstPlayer;
-            const message = gameEnded ? 'Game End' : `${currentPlayer.getName()}'s Turn`;
-            displayController.changePlayerTurnTitle(message);
-        }
-    
-        const doPlayerTurn = function(e) {
-            if(gameEnded) return;
-            
-            const isCellTaken = makePlayerMove(e.target, currentPlayer);
-            if(isCellTaken) return;
-    
-            const result = processGameResult(firstPlayer, secondPlayer);
-            gameEnded = result.gameEnded;
-            changePlayerTurn();
-        }
-    
-        const cleanGame = function() {
-            displayController.cleanGameboard();
-            gameBoard.clearArray();
-            displayController.changePlayerTurnTitle(`${currentPlayer.getName()}'s Turn`);
-            gameEnded = false;
-        }
-    
-        return {doPlayerTurn, cleanGame};
-    
-    })(player1, player2);
+        
+        const isCellTaken = makePlayerMove(e.target, currentPlayer);
+        if (isCellTaken) return; 
+
+        const result = processGameResult(firstPlayer, secondPlayer);
+        gameEnded = result.gameEnded;
+        changePlayerTurn();
+    }
+
+    const cleanGame = function() {
+        displayController.cleanGameboard();
+        gameBoard.clearArray();
+        currentPlayer = firstPlayer; // Garante que o Player 1 sempre recomeça
+        displayController.changePlayerTurnTitle(`${currentPlayer.getName()}'s Turn`);
+        gameEnded = false;
+    }
+
+    return { doPlayerTurn, cleanGame };
+
+})(player1, player2);
         
     resetButton.addEventListener('click', game.cleanGame);
     

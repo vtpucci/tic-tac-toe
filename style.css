@@ -18,8 +18,32 @@
     --FOOTER-FS: clamp(1rem, 5vw, 1.2rem);
     --RESULT-DIALOG-FS: clamp(1.2rem, 8vw, 2.3rem);
 
+    /* Cores Padrão - Acessíveis com bom contraste */
+    --BG-COLOR: rgb(211, 162, 88);
     --LIGHT-COLOR: rgb(216, 200, 173);
     --EXTRA-LIGHT-COLOR: rgb(230, 223, 210);
+    --TEXT-COLOR: #333;
+    --BORDER-COLOR: black;
+    --FOCUS-COLOR: #0056b3;
+
+    /* Cores dos Símbolos Seguras para Daltonismo (Azul vs Laranja) */
+    --COLOR-X: #0072B2; 
+    --COLOR-O: #E69F00;
+}
+
+/* 
+   TEMA DE ALTO CONTRASTE / DALTONISMO 
+   Basta adicionar a classe 'high-contrast' na tag <html> ou <body> via JS se desejar ativá-lo 
+*/
+.high-contrast {
+    --BG-COLOR: #121212;
+    --LIGHT-COLOR: #1e1e1e;
+    --EXTRA-LIGHT-COLOR: #333333;
+    --TEXT-COLOR: #ffffff;
+    --BORDER-COLOR: #ffffff;
+    --FOCUS-COLOR: #ffff00; /* Amarelo Puro para foco nítido */
+    --COLOR-X: #00ecff;
+    --COLOR-O: #ffb700;
 }
 
 html {
@@ -29,9 +53,11 @@ html {
 
 body {
     font-family: 'Roboto', sans-serif;
-    background-color: rgb(211, 162, 88);
+    background-color: var(--BG-COLOR);
     margin-bottom: 100px;
     user-select: none;
+    color: var(--TEXT-COLOR);
+    transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 /* HEADER */
@@ -48,7 +74,7 @@ header h1 {
     text-align: center;
     font-size: var(--TITLE-FS);
     background-color: var(--LIGHT-COLOR);
-    color: #333;
+    color: var(--TEXT-COLOR);
     border-radius: 20px;
 }
 
@@ -80,13 +106,36 @@ main .gameboard {
 }
 
 .gameboard .gamecell {
-    border: 2px solid black;
+    background: transparent;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    border: 2px solid var(--BORDER-COLOR);
     font-size: var(--PLAYER-SYMBOL-FS);
     cursor: pointer;
 
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+/* Cores específicas e acessíveis para os símbolos inseridos */
+.gamecell[aria-label*=", X"], 
+.gamecell:not(:empty):nth-child(odd) { /* Seletor fallback caso use texto direto */
+    color: var(--COLOR-X);
+}
+.gamecell[aria-label*=", O"],
+.gamecell:not(:empty):nth-child(even) {
+    color: var(--COLOR-O);
+}
+
+/* Acessibilidade: Destaca a célula selecionada*/
+.gameboard .gamecell:focus-visible {
+    outline: 4px var(--FOCUS-COLOR);
+    outline-offset: -4px;
 }
 
 .gameboard .gamecell:hover {
@@ -100,9 +149,10 @@ main button {
     font-weight: 500;
     margin: 0 auto;
     padding: 20px 70px;
-    border: none;
+    border: 1px solid var(--BORDER-COLOR);
     border-radius: 10px;
     background-color: var(--LIGHT-COLOR);
+    color: var(--TEXT-COLOR);
     cursor: pointer;
 }
 
@@ -113,78 +163,103 @@ main button:hover {
 /* DIALOG */
 
 dialog {
-    position: fixed;
+    margin: auto;
     border: none;
     border-radius: 20px;
     user-select: none;
+    background-color: white;
+    color: #333;
+    box-shadow: 0px 15px 40px rgba(0, 0, 0, 0.4);
+    
+    /* Configurações fundamentais para impedir cortes verticais */
+    width: max-content;
+    height: auto;
+    max-height: 90vh;
+    overflow-y: auto; /* Adiciona barra de rolagem se a tela for minúscula */
 }
 
 dialog::backdrop {
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.6);
 }
 
 /* --- RESULT DIALOG */
 
-.result-dialog {
-    top: 300px;
-    left: calc(50% - (var(--RESULT-DIALOG-WIDTH) / 2));
-}
-
 .result-dialog h1 {
-    padding: 70px 10px;
+    padding: 50px 30px;
     width: var(--RESULT-DIALOG-WIDTH);
     text-align: center;
     font-size: var(--RESULT-DIALOG-FS);
     font-weight: 700;
 }
 
-/* --- NAMES DIALOG */
-
-.names-dialog {
-    top: 200px;
-    left: calc(50% - (var(--NAMES-DIALOG-WIDTH) / 2));
+.result-dialog button {
+    display: block;
+    margin: 0 auto 30px auto;
+    padding: 12px 40px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    border-radius: 8px;
+    border: 1px solid #333;
 }
 
+/* --- NAMES DIALOG */
+
 .names-dialog form {
-    padding: 50px 0 70px 0;
+    padding: 40px 50px 40px 50px;
     width: var(--NAMES-DIALOG-WIDTH);
+    box-sizing: border-box;
 
     display: grid;
-    row-gap: 50px;
+    row-gap: 30px;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: auto 1fr auto;
+    grid-template-rows: auto; /* Mudado para auto para o grid se ajustar aos novos elementos */
     justify-items: center;
 }
 
 .names-dialog p.title {
     grid-column: 1 / -1;
-
    font-size: 2.5rem;
    font-weight: 700;
+   margin-bottom: 10px;
+   text-align: center;
 }
 
+.names-dialog p.config-field,
 .names-dialog p.player-name {
     display: flex;
     flex-direction: column;
     gap: 10px;
-
     font-size: 1.3rem;
     font-weight: 500;
     color: #333;
+    width: 100%;
+    align-items: center;
 }
 
-.names-dialog input {
-    width: 230px;
-    padding: 5px;
+/* Seletor do contêiner do jogador 2 para o JavaScript ocultar dinamicamente */
+#p2-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+}
+
+.names-dialog input,
+.names-dialog select {
+    width: 100%;
+    max-width: 260px;
+    padding: 10px;
     border: 2px solid #333;
     border-radius: 5px;
     font-size: 1rem;
+    font-family: inherit;
+    background-color: white;
+    box-sizing: border-box;
 }
 
 .names-dialog button {
     grid-column: 1 / -1;
-
-    margin-top: 25px;
+    margin-top: 20px;
     padding: 25px 70px;
     background-color: rgb(116, 233, 116);
     border: 0.5px solid black;
@@ -193,6 +268,7 @@ dialog::backdrop {
     font-size: 1.4rem;
     font-weight: 500;
     cursor: pointer;
+    transition: background-color 0.1s ease;
 }
 
 .names-dialog button:hover {
@@ -200,19 +276,19 @@ dialog::backdrop {
 }
 
 @media screen and (max-width: 600px) {
-    .names-dialog {
-        top: 100px;
-    }
     .names-dialog form {
-        row-gap: 40px;
+        row-gap: 20px;
         grid-template-columns: 1fr;
+        padding: 30px 24px;
     }
     .names-dialog p.title {
         font-size: clamp(1.5rem, 8vw, 2.2rem);
     }
     .names-dialog button {
-        padding-inline: 60px;
+        padding-inline: 50px;
         font-size: 1.2rem;
+        padding-block: 15px;
+        width: 100%;
     }
 }
 
@@ -223,7 +299,7 @@ footer {
     bottom: 15px;
     width: 100%;
     text-align: center;
-    color: black;
+    color: var(--BORDER-COLOR);
     font-size: var(--FOOTER-FS);
     user-select: text;
 }
