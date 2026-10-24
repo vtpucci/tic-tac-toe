@@ -44,6 +44,8 @@ function gameInitialization(player1, player2) {
         const clearArray = () => {
             gameBoardArray = [null, null, null, null, null, null, null, null, null];
         }
+
+        const getArray = () => gameBoardArray;
     
         const getGameBoardRows = () => {
             const copyGameArray = [...gameBoardArray];
@@ -123,7 +125,7 @@ function gameInitialization(player1, player2) {
             return result;
         }
     
-        return {addToArray, clearArray, checkWinner};
+        return {addToArray, clearArray, checkWinner, getArray};
     
     })();
     
@@ -206,23 +208,74 @@ function gameInitialization(player1, player2) {
         currentPlayer = currentPlayer === firstPlayer ? secondPlayer : firstPlayer;
         const message = gameEnded ? 'Game End' : `${currentPlayer.getName()}'s Turn`;
         displayController.changePlayerTurnTitle(message);
+
+        if (!gameEnded && IA_mode && currentPlayer === secondPlayer) {
+        setTimeout(doIAMove, 1000);
+        }
     }
 
-    const doPlayerTurn = function(e) {
-        if (gameEnded) return;
+    const doIAMove = () => {
+    if (gameEnded) return;
 
-        //Se o modo IA estiver ativo E for o turno do Player 2, bloqueia o clique
-        if (IA_mode === true && currentPlayer === secondPlayer) {
-            return; 
+    const arr = gameBoard.getArray(); 
+    let targetPosition = null;
+
+    //Se a IA estiver quase ganhando:
+    if (arr[0] === null && arr[1] === 'O' && arr[2] === 'O' || arr[0] === null && arr[4] === 'O' && arr[8] === 'O' || arr[0] === null && arr[3] === 'O' && arr[6] === 'O') targetPosition = 0;
+    else if (arr[1] === null && arr[0] === 'O' && arr[2] === 'O' || arr[1] === null && arr[4] === 'O' && arr[7] === 'O') targetPosition = 1;
+    else if (arr[2] === null && arr[0] === 'O' && arr[1] === 'O' || arr[2] === null && arr[4] === 'O' && arr[6] === 'O' || arr[2] === null && arr[5] === 'O' && arr[8] === 'O') targetPosition = 2;
+    else if (arr[3] === null && arr[0] === 'O' && arr[6] === 'O' || arr[3] === null && arr[4] === 'O' && arr[5] === 'O') targetPosition = 3;
+    else if (arr[4] === null && arr[3] === 'O' && arr[5] === 'O' || arr[4] === null && arr[0] === 'O' && arr[8] === 'O' || arr[4] === null && arr[2] === 'O' && arr[6] === 'O' || arr[4] === null && arr[1] === 'O' && arr[7] === 'O') targetPosition = 4;
+    else if (arr[5] === null && arr[3] === 'O' && arr[4] === 'O' || arr[5] === null && arr[2] === 'O' && arr[8] === 'O') targetPosition = 5;
+    else if (arr[6] === null && arr[0] === 'O' && arr[3] === 'O' || arr[6] === null && arr[2] === 'O' && arr[4] === 'O' || arr[6] === null && arr[7] === 'O' && arr[8] === 'O') targetPosition = 6;
+    else if (arr[7] === null && arr[1] === 'O' && arr[4] === 'O' || arr[7] === null && arr[6] === 'O' && arr[8] === 'O') targetPosition = 7;
+    else if (arr[8] === null && arr[0] === 'O' && arr[4] === 'O' || arr[8] === null && arr[2] === 'O' && arr[5] === 'O' || arr[8] === null && arr[6] === 'O' && arr[7] === 'O') targetPosition = 8;
+    // Se o jogador estiver quase ganhando:
+    else if (arr[0] === null && arr[1] === 'X' && arr[2] === 'X' || arr[0] === null && arr[4] === 'X' && arr[8] === 'X' || arr[0] === null && arr[3] === 'X' && arr[6] === 'X') targetPosition = 0;
+    else if (arr[1] === null && arr[0] === 'X' && arr[2] === 'X' || arr[1] === null && arr[4] === 'X' && arr[7] === 'X') targetPosition = 1;
+    else if (arr[2] === null && arr[0] === 'X' && arr[1] === 'X' || arr[2] === null && arr[4] === 'X' && arr[6] === 'X' || arr[2] === null && arr[5] === 'X' && arr[8] === 'X') targetPosition = 2;
+    else if (arr[3] === null && arr[0] === 'X' && arr[6] === 'X' || arr[3] === null && arr[4] === 'X' && arr[5] === 'X') targetPosition = 3;
+    else if (arr[4] === null && arr[3] === 'X' && arr[5] === 'X' || arr[4] === null && arr[0] === 'X' && arr[8] === 'X' || arr[4] === null && arr[2] === 'X' && arr[6] === 'X' || arr[4] === null && arr[1] === 'X' && arr[7] === 'X') targetPosition = 4;
+    else if (arr[5] === null && arr[3] === 'X' && arr[4] === 'X' || arr[5] === null && arr[2] === 'X' && arr[8] === 'X') targetPosition = 5;
+    else if (arr[6] === null && arr[0] === 'X' && arr[3] === 'X' || arr[6] === null && arr[2] === 'X' && arr[4] === 'X' || arr[6] === null && arr[7] === 'X' && arr[8] === 'X') targetPosition = 6;
+    else if (arr[7] === null && arr[1] === 'X' && arr[4] === 'X' || arr[7] === null && arr[6] === 'X' && arr[8] === 'X') targetPosition = 7;
+    else if (arr[8] === null && arr[0] === 'X' && arr[4] === 'X' || arr[8] === null && arr[2] === 'X' && arr[5] === 'X' || arr[8] === null && arr[6] === 'X' && arr[7] === 'X') targetPosition = 8;
+    //Se não, a IA escolhe uma posição aleatória:
+    if (targetPosition === null) {
+        let availablePositions = [];
+        arr.forEach((cell, index) => {
+            if (cell === null) availablePositions.push(index);
+        });
+        if (availablePositions.length > 0) {
+            const randomIndex = Math.floor(Math.random() * availablePositions.length);
+            targetPosition = availablePositions[randomIndex];
         }
-        
-        const isCellTaken = makePlayerMove(e.target, currentPlayer);
-        if (isCellTaken) return; 
+    }
 
+    if (targetPosition !== null) {
+        const targetCell = Array.from(gameCells).find(cell => parseInt(cell.dataset.position) === targetPosition);
+        
+        makePlayerMove(targetCell, currentPlayer);
+        
         const result = processGameResult(firstPlayer, secondPlayer);
         gameEnded = result.gameEnded;
         changePlayerTurn();
     }
+};
+
+    const doPlayerTurn = function(e) {
+    if (gameEnded) return;
+    
+    // 🌟 PROTEÇÃO: Impede cliques humanos se for o turno da IA
+    if (IA_mode && currentPlayer === secondPlayer) return;
+
+    const isCellTaken = makePlayerMove(e.target, currentPlayer);
+    if (isCellTaken) return;
+
+    const result = processGameResult(firstPlayer, secondPlayer);
+    gameEnded = result.gameEnded;
+    changePlayerTurn();
+}
 
     const cleanGame = function() {
         displayController.cleanGameboard();
