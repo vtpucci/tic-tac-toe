@@ -1,5 +1,5 @@
 const gameCells = document.querySelectorAll('.gamecell');
-const resetButton = document.querySelector('main button');
+const resetButton = document.querySelector('#btn-reset');
 
 const namesDialog = document.querySelector('.names-dialog');
 const namesDialogButton = namesDialog.querySelector('button');
