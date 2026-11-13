@@ -16,6 +16,8 @@
 
 # ⭕ Morpion (Accessible et Multilingue) ❌
 
+### 🎮 [Jouer à la Démo en Ligne] (https://vtpucci.github.io/tic-tac-toe/)
+
 Un projet *open-source* de jeu de Morpion (Tic-Tac-Toe) développé avec **HTML5, CSS3 et JavaScript pur**. 
 
 L'objectif principal de ce projet est le **design inclusif (Accessibilité / A11y)**, permettant aux personnes aveugles, malvoyantes, daltoniennes ou ayant des limitations motrices de jouer facilement à l'aide de lecteurs d'écran ou uniquement au clavier, tout en proposant un adversaire doté d'une Intelligence Artificielle.

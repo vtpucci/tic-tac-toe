@@ -16,6 +16,8 @@
 
 # ⭕ Tres en Raya (Accesible y Multilingüe) ❌
 
+### 🎮 [Jugar Demo en Vivo](https://vtpucci.github.io/tic-tac-toe/)
+
 Un proyecto *open-source* de Tres en Raya desarrollado con **HTML5, CSS3 y JavaScript puro**. 
 
 El enfoque principal de este proyecto es el **diseño inclusivo (Accesibilidad / A11y)**, permitiendo que personas ciegas, con baja visión, daltonismo o limitaciones motoras jueguen fácilmente usando lectores de pantalla o solo el teclado, además de contar con un oponente de Inteligencia Artificial.

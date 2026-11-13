@@ -16,6 +16,8 @@
 
 # ⭕ Tic-Tac-Toe (Accessible & Multilingual) ❌
 
+### 🎮 [Play Live Demo] (https://vtpucci.github.io/tic-tac-toe/)
+
 An open-source, accessible, and multilingual Tic-Tac-Toe web game built with pure **HTML5, CSS3, and Vanilla JavaScript**. 
 
 This project focuses on **inclusive design (A11y)**, allowing players with visual impairments, color blindness, or motor limitations to play seamlessly using screen readers or keyboard-only navigation, alongside a smart AI opponent.

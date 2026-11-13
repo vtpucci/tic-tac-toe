@@ -16,6 +16,8 @@
 
 # ⭕ Jogo do Galo (Acessível e Multilingue) ❌
 
+### 🎮 [Jogar Demonstração ao Vivo] (https://vtpucci.github.io/tic-tac-toe/)
+
 Um projeto *open-source* de Jogo do Galo desenvolvido com **HTML5, CSS3 e JavaScript puro**. 
 
 O foco principal deste projeto é o **design inclusivo (Acessibilidade / A11y)**, permitindo que pessoas cegas, com baixa visão, daltonismo ou limitações motoras joguem com facilidade utilizando leitores de ecrã ou apenas o teclado, além de contar com um modo contra a Inteligência Artificial.
