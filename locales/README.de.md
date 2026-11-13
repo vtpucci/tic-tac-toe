@@ -54,7 +54,12 @@ Da das Spiel Übersetzungen aus einer externen `languages.json`-Datei über `fet
 * **JavaScript (ES6+)** (Factory Functions, Module Pattern, Asynchrone Fetch API)
 
 ## 🤝 Danksagungen & Mitwirken
-* Ursprüngliches Basisprojekt von **Marc Frances**.
-* Erweiterungen für Barrierefreiheit, Internationalisierung und KI von **[Dein Name / Dein GitHub]**.
+* Ursprüngliches Basisprojekt von **Marc Frances / marcft**.
+* Erweiterungen für Barrierefreiheit, Internationalisierung und KI von:
+**[Vinicius Pucci / vtpucci]**
+**[Anderson Gomes / AnderSonBsons]**
+**[Cassiano Rezio / Cass128]**
+**[Jardson Dias / Atile-Dias]**
+**[Lucas Artuzo / XLucaspa1512X]**
 
 Beiträge, *Issues* und Verbesserungsvorschläge sind herzlich willkommen!

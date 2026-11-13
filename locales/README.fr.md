@@ -54,7 +54,12 @@ Comme le jeu charge les traductions depuis un fichier externe `languages.json` v
 * **JavaScript (ES6+)** (Factory Functions, Module Pattern, Fetch API asynchrone)
 
 ## 🤝 Crédits et Contributions
-* Projet de base original par **Marc Frances**.
-* Améliorations d'accessibilité, d'internationalisation et d'IA par **[Votre Nom / Votre GitHub]**.
+* Projet de base original par **Marc Frances / marcft**.
+* Améliorations d'accessibilité, d'internationalisation et d'IA par:
+**[Vinicius Pucci / vtpucci]**
+**[Anderson Gomes / AnderSonBsons]**
+**[Cassiano Rezio / Cass128]**
+**[Jardson Dias / Atile-Dias]**
+**[Lucas Artuzo / XLucaspa1512X]**
 
 Les contributions, *issues* et suggestions sont les bienvenues !

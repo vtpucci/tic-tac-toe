@@ -54,7 +54,12 @@ Because this project fetches translations from an external `languages.json` file
 * **JavaScript (ES6+)** (Factory Functions, Module Pattern, Async/Await Fetch API)
 
 ## 🤝 Credits & Contributing
-* Original base project by **Marc Frances**.
-* Accessibility, i18n, and AI features contributed by **[Your Name/GitHub Handle]**.
+* Original base project by **Marc Frances / marcft**.
+* Accessibility, i18n, and AI features contributed by: 
+**[Vinicius Pucci / vtpucci]**
+**[Anderson Gomes / AnderSonBsons]**
+**[Cassiano Rezio / Cass128]**
+**[Jardson Dias / Atile-Dias]**
+**[Lucas Artuzo / XLucaspa1512X]**
 
 Contributions, issues, and feature requests are welcome!
