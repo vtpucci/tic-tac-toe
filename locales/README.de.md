@@ -1,27 +1,15 @@
 <p align="center">
-  <a href="../README.md">
-    <img src="https://jsdelivr.net" width="20" alt="English"> English
-  </a>
+  <a href="../README.md">🇺🇸 English</a>
   &nbsp;&nbsp;|&nbsp;&nbsp;
-  <a href="README.pt-BR.md">
-    <img src="https://jsdelivr.net" width="20" alt="Português (Brasil)"> Português (BR)
-  </a>
+  <a href="README.pt-BR.md">🇧🇷 Português (BR)</a>
   &nbsp;&nbsp;|&nbsp;&nbsp;
-  <a href="README.pt-PT.md">
-    <img src="https://jsdelivr.net" width="20" alt="Português (Portugal)"> Português (PT)
-  </a>
+  <a href="README.pt-PT.md">🇵🇹 Português (PT)</a>
   &nbsp;&nbsp;|&nbsp;&nbsp;
-  <a href="README.es.md">
-    <img src="https://jsdelivr.net" width="20" alt="Español"> Español
-  </a>
+  <a href="README.es.md">🇪🇸 Español</a>
   &nbsp;&nbsp;|&nbsp;&nbsp;
-  <a href="README.fr.md">
-    <img src="https://jsdelivr.net" width="20" alt="Français"> Français
-  </a>
+  <a href="README.fr.md">🇫🇷 Français</a>
   &nbsp;&nbsp;|&nbsp;&nbsp;
-  <a href="README.de.md">
-    <img src="https://jsdelivr.net" width="20" alt="Deutsch"> Deutsch
-  </a>
+  <a href="README.de.md">🇩🇪 Deutsch</a>
 </p>
 
 ---

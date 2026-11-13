@@ -1,27 +1,15 @@
 <p align="center">
-  <a href="README.md">
-    <img src="https://jsdelivr.net" width="20" alt="English"> English
-  </a>
+  <a href="README.md">🇺🇸 English</a>
   &nbsp;&nbsp;|&nbsp;&nbsp;
-  <a href="locales/README.pt-BR.md">
-    <img src="https://jsdelivr.net" width="20" alt="Português (Brasil)"> Português (BR)
-  </a>
+  <a href="locales/README.pt-BR.md">🇧🇷 Português (BR)</a>
   &nbsp;&nbsp;|&nbsp;&nbsp;
-  <a href="locales/README.pt-PT.md">
-    <img src="https://jsdelivr.net" width="20" alt="Português (Portugal)"> Português (PT)
-  </a>
+  <a href="locales/README.pt-PT.md">🇵🇹 Português (PT)</a>
   &nbsp;&nbsp;|&nbsp;&nbsp;
-  <a href="locales/README.es.md">
-    <img src="https://jsdelivr.net" width="20" alt="Español"> Español
-  </a>
+  <a href="locales/README.es.md">🇪🇸 Español</a>
   &nbsp;&nbsp;|&nbsp;&nbsp;
-  <a href="locales/README.fr.md">
-    <img src="https://jsdelivr.net" width="20" alt="Français"> Français
-  </a>
+  <a href="locales/README.fr.md">🇫🇷 Français</a>
   &nbsp;&nbsp;|&nbsp;&nbsp;
-  <a href="locales/README.de.md">
-    <img src="https://jsdelivr.net" width="20" alt="Deutsch"> Deutsch
-  </a>
+  <a href="locales/README.de.md">🇩🇪 Deutsch</a>
 </p>
 
 ---
