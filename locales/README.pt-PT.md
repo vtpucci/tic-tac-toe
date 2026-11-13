@@ -1,26 +1,26 @@
 <p align="center">
   <a href="../README.md">
-    <img src="https://flagcdn.com" alt="English"> English
+    <img src="https://jsdelivr.net" width="20" alt="English"> English
   </a>
   &nbsp;&nbsp;|&nbsp;&nbsp;
   <a href="README.pt-BR.md">
-    <img src="https://flagcdn.com" alt="Português (Brasil)"> Português (BR)
+    <img src="https://jsdelivr.net" width="20" alt="Português (Brasil)"> Português (BR)
   </a>
   &nbsp;&nbsp;|&nbsp;&nbsp;
   <a href="README.pt-PT.md">
-    <img src="https://flagcdn.com" alt="Português (Portugal)"> Português (PT)
+    <img src="https://jsdelivr.net" width="20" alt="Português (Portugal)"> Português (PT)
   </a>
   &nbsp;&nbsp;|&nbsp;&nbsp;
   <a href="README.es.md">
-    <img src="https://flagcdn.com" alt="Español"> Español
+    <img src="https://jsdelivr.net" width="20" alt="Español"> Español
   </a>
   &nbsp;&nbsp;|&nbsp;&nbsp;
   <a href="README.fr.md">
-    <img src="https://flagcdn.com" alt="Français"> Français
+    <img src="https://jsdelivr.net" width="20" alt="Français"> Français
   </a>
   &nbsp;&nbsp;|&nbsp;&nbsp;
   <a href="README.de.md">
-    <img src="https://flagcdn.com" alt="Deutsch"> Deutsch
+    <img src="https://jsdelivr.net" width="20" alt="Deutsch"> Deutsch
   </a>
 </p>
 
